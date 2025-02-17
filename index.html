@@ -45,6 +45,12 @@
             font-size: 2.5rem;
             margin: 0 0 1rem;
             text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+            animation: textAnimation 1.5s ease-in-out infinite alternate;
+        }
+
+        @keyframes textAnimation {
+            0% { color: #ff3366; }
+            100% { color: #ff6600; }
         }
 
         input {
@@ -55,6 +61,12 @@
             margin: 1rem;
             width: 200px;
             text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        input:focus {
+            outline: none;
+            border-color: #ff6600;
         }
 
         button {
@@ -111,15 +123,31 @@
             50% { transform: translateY(-100px) rotate(4deg); }
         }
 
-        .cake {
+        .cake-container {
+            position: relative;
             width: 150px;
-            margin: 2rem;
+            margin-left: 35%;
             cursor: pointer;
             transition: transform 0.3s;
         }
 
-        .cake:hover {
+        .cake-container:hover {
             transform: scale(1.1);
+        }
+
+        .cake {
+            width: 100%;
+        }
+
+        .cake-number {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 3rem;
+            color: #ffffff;
+            font-weight: bold;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
         }
 
         .hearts span {
@@ -145,6 +173,21 @@
         @keyframes confetti {
             0% { transform: translateY(-100vh) rotate(0deg); }
             100% { transform: translateY(100vh) rotate(360deg); }
+        }
+
+        .firework {
+            position: absolute;
+            width: 50px;
+            height: 50px;
+            background: radial-gradient(circle, red, orange, yellow);
+            border-radius: 50%;
+            animation: explode 2s infinite;
+        }
+
+        @keyframes explode {
+            0% { transform: scale(0); opacity: 1; }
+            50% { transform: scale(1.2); opacity: 0.5; }
+            100% { transform: scale(0); opacity: 0; }
         }
     </style>
 </head>
@@ -173,10 +216,16 @@
             <span style="left: 70%; top: 30%">💕</span>
             <span style="left: 90%; top: 60%">💞</span>
         </div>
-        
+
+        <div class="firework" style="top: 10%; left: 10%;"></div>
+        <div class="firework" style="top: 30%; left: 80%;"></div>
+
         <div class="container">
             <h1>Happy Birthday Subhiksha! 🎉</h1>
-            <img src="https://cdn-icons-png.flaticon.com/512/1046/1046784.png" class="cake" alt="Birthday Cake" onclick="blowCandle(this)">
+            <div class="cake-container" onclick="blowCandle(this)">
+                <img src="https://www.kindpng.com/picc/m/129-1297279_birthday-cake-icon-png-transparent-png.png" class="cake" alt="Birthday Cake">
+                <div class="cake-number">23</div>
+            </div>
             <div class="reasons-container" id="reasons"></div>
             <button onclick="showLove()">💖 Click for Special Message</button>
         </div>
@@ -209,26 +258,36 @@
 
         function generateReasons(age) {
             const reasons = [
+                 "Your eyes are a captivating masterpiece 👀",
                 "Your smile lights up my world ✨",
-                "Your kindness knows no bounds 💖",
+                "You know how to make me laugh 💖",
+                "The way you respect me and put effort into speaking with me 💞",
                 "You make every day special 🌟",
+                "Your pranks and scripts 😏",
                 "Your laughter is my favorite sound 😄",
-                "You're my perfect match 💑",
+                "You listen to me with genuine interest 😊",
                 "Your intelligence inspires me 🧠",
                 "You're beautiful inside and out 🌸",
                 "You understand me like no one else 🤗",
-                "Your passion is contagious 🔥",
+                "You accept me as I am 🔥",
                 "You make me a better person 🌈",
-                "Your hugs feel like home 🏡",
-                "You're my favorite adventure partner 🌍",
+                "You make even the ordinary moments special 🎩",
+                "You're my favorite crime partner 🌍",
                 "Your eyes sparkle like stars ✨",
                 "You're incredibly strong 💪",
                 "You always believe in me 🙌",
                 "Your love makes me complete 💞",
                 "You're my forever person ⏳",
-                "You make ordinary moments magical 🎩",
-                "Your voice soothes my soul 🎶",
-                "You're my happy place 😊"
+                "Your loyalty 🙌",
+                "Your voice calms my heart 🎶",
+                "You're my happy place 😊",
+                "You make me feel appreciated 💕",
+                "Your laughter makes me feel so alive 🌱",
+                "You're always there when i need you 🤗",
+                "You're my best friend forever 👯‍♀️",
+                "The way you look at me 💞",
+                "Every moment with you is a treasure 🎁",
+                "You're everything I could ever want and more 🌹"
             ];
 
             const container = document.getElementById('reasons');
@@ -249,7 +308,7 @@
 
         function showLove() {
             alert("Subhiksha, you're the most amazing person I know!\nThank you for being you 💖\nI love you to the moon and back 🌙✨");
-        }
+        } 
     </script>
 </body>
 </html>
